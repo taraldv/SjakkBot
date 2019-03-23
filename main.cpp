@@ -43,16 +43,8 @@ int main() {
   Threads.set(Options["Threads"]);
   Search::clear(); // After threads are up
 
-  //simulate cmd inputs
-  char* testFen = (char*)"rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2";
-  char* fen = (char*)"fen";
-  char* position = (char*)"position";
-  char* argv[3];
-  argv[0] = position;
-  argv[1] = fen;
-  argv[2] = testFen;
-
-  UCI::loop(3,argv);
+  std::string fen = "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2";
+  UCI::newLoop(fen);
 
   Threads.set(0);
   return 0;

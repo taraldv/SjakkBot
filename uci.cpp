@@ -180,6 +180,23 @@ namespace {
 } // namespace
 
 
+
+void UCI::newLoop(string fen){
+  Position pos;
+  string token, cmd;
+  StateListPtr states(new std::deque<StateInfo>(1));
+  auto uiThread = std::make_shared<Thread>(0);
+
+  pos.set(StartFEN, false, &states->back(), uiThread.get());
+  pos.set(fen, Options["UCI_Chess960"], &states->back(), Threads.main());
+
+  //print brett
+  sync_cout << pos << sync_endl;
+  
+  istringstream is("");
+  go(pos, is, states);
+}
+
 /// UCI::loop() waits for a command from stdin, parses it and calls the appropriate
 /// function. Also intercepts EOF from stdin to ensure gracefully exiting if the
 /// GUI dies unexpectedly. When called with some command line arguments, e.g. to

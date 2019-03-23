@@ -18,4 +18,4 @@ $(PROG): $(OBJS)
 -include .depend
 
 clean:
-	rm -f *stackdump $(PROG) main.o
+	rm -f *stackdump $(PROG) main.o uci.o search.o
