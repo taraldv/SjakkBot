@@ -1,1 +1,5 @@
 *.o
+.depend
+.vs/
+oldMake
+Stockfish-master/
