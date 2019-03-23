@@ -5,7 +5,7 @@ DEPENDFLAGS += -std=c++11
 
 OBJS = benchmark.o bitbase.o bitboard.o endgame.o evaluate.o main.o \
 	material.o misc.o movegen.o movepick.o pawns.o position.o psqt.o \
-	search.o thread.o timeman.o tt.o uci.o ucioption.o syzygy/tbprobe.o
+	search.o thread.o timeman.o tt.o uci.o ucioption.o syzygy/tbprobe.o bot.o
 
 all: $(PROG) .depend
 
@@ -18,4 +18,4 @@ $(PROG): $(OBJS)
 -include .depend
 
 clean:
-	rm -f *stackdump $(PROG) main.o uci.o search.o
+	rm -f *stackdump $(PROG) main.o bot.o

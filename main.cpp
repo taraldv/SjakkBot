@@ -27,12 +27,23 @@
 #include "tt.h"
 #include "uci.h"
 #include "syzygy/tbprobe.h"
+#include "bot.h"
+
+using namespace std;
 
 namespace PSQT {
   void init();
 }
 
 int main() {
+
+ bot* b = new bot(18292);
+  b->updateArray();
+  b->printArray();
+  string fen = b->getFEN();
+  cout << fen << endl;
+  delete b;
+
   UCI::init(Options);
   PSQT::init();
   Bitboards::init();
@@ -43,9 +54,12 @@ int main() {
   Threads.set(Options["Threads"]);
   Search::clear(); // After threads are up
 
-  std::string fen = "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2";
+  //std::string fen = "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2";
   UCI::newLoop(fen);
 
   Threads.set(0);
+
+ 
+
   return 0;
 }
