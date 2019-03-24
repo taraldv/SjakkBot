@@ -37,10 +37,10 @@ namespace PSQT {
 
 int main() {
 
- bot* b = new bot(18292);
+ bot* b = new bot(7256);
   b->updateArray();
   b->printArray();
-  string fen = b->getFEN();
+ /* string fen = b->getFEN();
   cout << fen << endl;
   delete b;
 
@@ -60,6 +60,6 @@ int main() {
   Threads.set(0);
 
  
-
+*/
   return 0;
 }

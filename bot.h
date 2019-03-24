@@ -16,6 +16,7 @@ private:
 	HANDLE phandle;
 	std::string getFENpiece();
 	int getFullMove();
+	DWORD64 findA1();
 public:
 	bot(DWORD pid);
 	~bot();

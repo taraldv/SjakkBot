@@ -20,15 +20,33 @@ bot::~bot(){
 }*/
 
 
-DWORD a1x = 0x0CADA490;
-DWORD a1y = 0x0D012510;
+//DWORD a1x = 0x0CADA490;
+//DWORD a1y = 0x0D012510;
+DWORD64 chessA1 = 0x21DCD97106C;
 
 int offset = 4;
 
-void bot::updateArray(){
-    for(int i=0;i<64;i++){
-            ReadProcessMemory(phandle,(void*)a1y+(i*offset),&arr[i],sizeof(arr[i]),0);
+DWORD64 bot::findA1(){
+    DWORD64 start = 0x0;
+    int* mem[32];
+    bool found = false;
+    ReadProcessMemory(phandle,(void*)start,&mem,sizeof(mem),0);
+    for(int i=0;i<32;i++){
+        cout << mem[i] << endl;
     }
+    return start;
+}
+
+void bot::updateArray(){
+    DWORD64 a1 = findA1();
+    cout << a1 << endl;
+   /* int temp = 0;
+    for(int i=0;i<8;i++){
+        for(int j=0;j<8;j++){
+            int index = i*8+j;
+            ReadProcessMemory(phandle,(void*)chessA1+((index+2*i)*offset),&arr[index],sizeof(arr[index]),0);
+        }
+    }*/
 }
 
 string bot::getFEN(){
